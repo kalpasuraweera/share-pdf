@@ -19,7 +19,8 @@
 			    <h5 class="card-title"><%= pdf.name %></h5>
 			    <h6 class="card-subtitle mb-2 text-muted"><%= pdf.author %></h6>
 			    <p class="card-text"><%= pdf.description %></p>
-			    <a href="<%= pdf.link %>" class="btn btn-primary" >Download</a>
+			    <a href="/pdf/<%= pdf.id %>" class="btn btn-outline-primary card-link" >Read More</a>
+			    <a href="<%= pdf.link %>" target="_blank" class="btn btn-primary card-link" >Download</a>
 			  </div>
 			</div>
 

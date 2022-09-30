@@ -69,14 +69,17 @@ app.get('/pdf/:pdfId',(req,res)=>{
 	}
 	});
 
-	//63272471d3c4c089d5091bc7
-	// Pdf.find({},(err,doc)=>{
-	// 	if(!err){
-	// 		console.log(doc)
-	// 	}else{
-	// 		console.log(err)
-	// 	}
-	// })
+
+// in case i want to implement a delete option i can use this
+
+// app.get('/del', (req,res)=>{
+// 	Pdf.deleteMany({description:"sample"}, err=>{
+// 		if(err){
+// 			console.log(err)
+// 		}
+// 	})
+// })
+
 	
 	
 })
