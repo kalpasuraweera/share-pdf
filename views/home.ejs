@@ -11,7 +11,24 @@
 	<h1>Home</h1>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload" >Upload</button>
 
+	<div class="pdflist">
+		<% docs.forEach(pdf=>{ %>
 
+			<div class="card pdfs" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title"><%= pdf.name %></h5>
+			    <h6 class="card-subtitle mb-2 text-muted"><%= pdf.author %></h6>
+			    <p class="card-text"><%= pdf.description %></p>
+			    <a href="<%= pdf.link %>" class="btn btn-primary" >Download</a>
+			  </div>
+			</div>
+
+			
+			
+
+
+		<% }) %>
+	</div>
 
 
 	<!-- Upload-Modal -->

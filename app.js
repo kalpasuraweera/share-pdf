@@ -23,10 +23,17 @@ const Pdf = mongoose.model('Pdf', {
 });
 
 
- //upload ekata popup ekk danna wenma page ekk oni naa
 
 app.get('/',(req,res)=>{
-	res.render('home')
+	Pdf.find({},(err, docs)=>{
+		if(err){
+			console.log('db error')
+		}else{
+			console.log(docs)
+			res.render('home', {docs:docs})
+		}
+	})
+	
 })
 
 app.get('/upload', (req,res)=>{
