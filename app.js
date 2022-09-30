@@ -16,38 +16,51 @@ mongoose.connect('mongodb://localhost:27017/Sharepdf')
 const Pdf = mongoose.model('Pdf', { 
 	name: String, 
 	author: String, 
-	description: String, 
+	description: String,
+	link:String, 
 	upvotes: Number, 
 	downvotes: Number
 });
 
 
- 
+ //upload ekata popup ekk danna wenma page ekk oni naa
 
 app.get('/',(req,res)=>{
 	res.render('home')
 })
 
-app.get('/upload',(req,res)=>{
-	const kitty = new Pdf({ 
-		name: "python", 
-		author: "kalpa", 
-		description: "no desic", 
-		upvotes: 5, 
-		downvotes: 2
+app.get('/upload', (req,res)=>{
+	res.redirect('/')
+})
+
+app.post('/upload',(req,res)=>{
+	const pName= req.body.pname;
+	const pAuth= req.body.pauth;
+	const pDesc= req.body.pdesc;
+	const pLink=req.body.plink;
+	const newPdf = new Pdf({ 
+		name: pName, 
+		author: pAuth, 
+		description: pDesc, 
+		link:pLink,
+		upvotes: 0, 
+		downvotes: 0
 	});
-	kitty.save().then(() => console.log('meow'));
-	res.render('upload')
+	newPdf.save().then(() => console.log('uploaded'));
+	res.redirect('/');
 })
 app.get('/pdf/:pdfId',(req,res)=>{
 	const pdfId= req.params.pdfId;
 	Pdf.findById(pdfId, (err,pdf)=>{
 		if(err){
 			console.log('db error')
-		}else{
+			res.redirect('/')
+		}else if(pdf){
 			res.render('pdf', {pdf:pdf})
-		}
-	})
+		}else{
+		res.render('/')
+	}
+	});
 
 	//63272471d3c4c089d5091bc7
 	// Pdf.find({},(err,doc)=>{
