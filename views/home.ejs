@@ -12,7 +12,9 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload" >Upload</button>
 
 	<div class="pdflist">
-		<% docs.forEach(pdf=>{ %>
+		<% list=docs %>
+		<% if(list){ %>
+		<% list.forEach(pdf=>{ %>
 
 			<div class="card pdfs" style="width: 18rem;">
 			  <div class="card-body">
@@ -29,6 +31,9 @@
 
 
 		<% }) %>
+		<% }else{ %>
+			Upload a PDF
+		<% } %>
 	</div>
 
 

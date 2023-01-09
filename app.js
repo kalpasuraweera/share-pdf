@@ -11,7 +11,7 @@ const app =express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname+"/public"));
-mongoose.connect('mongodb://localhost:27017/Sharepdf')
+mongoose.connect('mongodb://127.0.0.1:27017/Sharepdf')
 
 const Pdf = mongoose.model('Pdf', { 
 	name: String, 
@@ -85,5 +85,5 @@ app.get('/pdf/:pdfId',(req,res)=>{
 })
 
 app.listen(5000, ()=>{
-	console.log("serever started")
+	console.log("server started")
 });
